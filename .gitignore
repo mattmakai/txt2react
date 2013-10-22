@@ -1,0 +1,10 @@
+*.egg*
+*.py[co]
+*.swp
+.DS_Store
+*~
+*.db
+*.log
+fabfile.py
+set_envs.sh
+assets

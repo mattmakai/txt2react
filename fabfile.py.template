@@ -1,0 +1,53 @@
+from os import environ
+
+from fabric.api import *
+from fabric.context_managers import cd
+
+# your local user on this machine
+env.user = '' # e.g. matt
+# your local user's password
+env.password = '' # e.g. password123
+env.hosts = ['localhost',]
+env.project_name = 'txt2react'
+env.db_name = 't2r'
+# change this if you checked it out to a different directory
+env.project_dir = '~/devel/excella/t2r/'
+# your local virtualenv
+env.activate = '~/Envs/t2r/bin/activate'
+env.fixtures = 'core/fixtures/initial_data.json'
+
+
+def env_run(command, run_directory=env.project_dir):
+    """
+        Helper function that runs commands both in the virtualenv 
+        and sets the local environment variables.
+    """
+    with cd(run_directory):
+        run('source ' + env.activate + ' && . ./set_envs.sh && ' + command)
+
+
+def test():
+    env_run('python manage.py test core developers payments')
+
+
+def rebuild_db():
+    run('dropdb %s' % env.project_name)
+    run('createdb %s' % env.project_name)
+    env_run('python manage.py syncdb --noinput')
+    env_run('python manage.py migrate')
+    env_run('python manage.py loaddata %s/%s' % (env.project_dir, 
+        env.fixtures))
+
+def deploy(commit_msg):
+    """
+        Deploys to Heroku if all tests pass.
+    """
+    test()
+    env_run('git add . && git commit -m "%s"' % commit_msg)
+    env_run('git push heroku master')
+
+def rs():
+    env_run('python manage.py runserver 0.0.0.0:8001')
+
+def git_push():
+    env_run('git push origin master')

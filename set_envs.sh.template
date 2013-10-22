@@ -1,0 +1,26 @@
+# Django settings
+export DEBUG=True
+export PRODUCTION_MODE=False
+export DATABASE_URL='postgres://matt@localhost:5432/t2r'
+export SECRET_KEY='developer key'
+export USE_DEBUG_TOOLBAR=True
+export STATIC_URL='/static/'
+export SESSION_COOKIE_SECURE=False
+
+# Social OAuth integrations
+export GITHUB_APP_ID=''
+export GITHUB_API_SECRET=''
+export TWITTER_CONSUMER_KEY=''
+export TWITTER_CONSUMER_SECRET=''
+
+# Intercom customer engagement
+export INTERCOM_IO_APP_ID=''
+export INTERCOM_IO_API_SECRET=''
+
+# Stripe payments integration
+export STRIPE_SECRET_KEY=''
+export STRIPE_PUBLIC_KEY=''
+
+# Twilio account keys
+export TWILIO_ACCOUNT_SID=''
+export TWILIO_AUTH_TOKEN=''

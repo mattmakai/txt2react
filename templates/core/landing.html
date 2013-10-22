@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="color: #eee; font-size: 4em;">
+                    Capture immediate reactions from your audience via 
+                    text messages.
+                </h1>
+            </div>
+        </div>
+        <div class="row" style="font-size: 8em; color: #eee; margin-top: 25px;">
+            <i class="icon-comment-alt icon-2x"></i>
+            <span style="vertical-align: top;">+</span>
+            <i class="icon-mobile-phone icon-2x"></i>
+            <span style="vertical-align: top;">=</span>
+            <i class="icon-lightbulb icon-2x"></i>
+        </div>
+
+        <div class="row" style="margin-top: 60px; margin-bottom: 60px;">
+            <div class="col-md-12">
+                <a href="{% url 'learn_more' %}" class="btn btn-lg btn-info btn-landing" style="margin-right: 20px;">Learn More</a>
+                <a href="{% url 'socialauth_begin' 'github' %}" class="btn btn-lg btn-success btn-landing" style="margin-right: 20px;">Sign in with <i class="icon-github"></i></a>
+                <a href="{% url 'socialauth_begin' 'twitter' %}" class="btn btn-lg btn-success btn-landing">Sign in with <i class="icon-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_ready %}
+    $.backstretch("{% static 'img/mobile-phone-stylized.jpg' %}");
+{% endblock %}

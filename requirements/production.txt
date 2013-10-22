@@ -1,0 +1,4 @@
+-r base.txt
+gunicorn==0.17.2
+psycopg2==2.5
+newrelic==1.13.1.31

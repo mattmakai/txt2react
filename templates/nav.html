@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="masthead">
+        <div class="row" style="text-align: left;">
+            <div class="col-md-12">
+          <h1 class="logo"><a href="{% url 'landing' %}"><i class="icon-xing"></i> Txt 2 React</a></h1>
+            </div>
+          {% comment %}
+          <ul class="nav nav-justified">
+              <li {% if is_landing %}class="active"{% endif %}><a href="{% url 'landing' %}">Home</a></li>
+              <li {% if is_learn_more %}class="active"{% endif %}><a href="{% url 'learn_more' %}">Learn More</a></li>
+              <li {% if is_contact %}class="active"{% endif %}><a href="{% url 'contact' %}">Contact</a></li>
+              <li {% if is_sign_up %}class="active"{% endif %}><a href="{% url 'signup' %}">Sign Up</a></li>
+              <li {% if is_sign_in %}class="active"{% endif %}><a href="{% url 'signin' %}">Sign In</a></li>
+          </ul>
+            {% endcomment %}
+        </div>
+    </div>
+</div>

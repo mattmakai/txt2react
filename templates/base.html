@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Txt2React</title>
+    <meta name="author" content="Matt Makai">
+    <meta name="description" content="Get reactions from people simply by having them send a text message.">
+    <meta name="language" content="english" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    {% block css_head %}{% endblock %}
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    {% if IS_PRODUCTION %}
+        <script type="text/javascript">
+          var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-000']);
+          _gaq.push(['_trackPageview']);
+          (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+        </script>
+    {% endif %}
+</head>
+<body>
+    {% if is_landing %}
+    <div style="background: rgba(0,0,0,.7); text-align: center;" id="wrap">
+    {% endif %}
+        {% include "nav.html" %}
+        {% block content %}{% endblock %}
+    {% if is_landing %}
+    </div>
+    {% endif %}
+
+    <div id="footer">
+          <div class="container">
+             <p style="text-align: right;">
+                &copy; 
+                <a href="http://www.mattmakai.com/">Matt Makai</a> 2013
+             </p>
+          </div>
+    </div>
+
+    <script src="{% static 'js/jquery-1.10.2.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.backstretch.min.js' %}" type="text/javascript"></script>
+    {% block javascript_body %}{% endblock %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            {% block js_ready %}{% endblock %}
+        });
+    </script>
+</body>
+</html>

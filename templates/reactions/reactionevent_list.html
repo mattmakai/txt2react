@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Your Events</h2>
+            {% if object_list %}
+            <table id="events-table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th># of Reactions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in object_list %}
+                        <tr>
+                            <td>{{ o.name }}</td>
+                            <td>{{ o.event_date }}</td>
+                            <td>{{ o.reactions_set.count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                Nothin' found.
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_body %}
+    <script src="{% static 'js/jquery.dataTables.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block js_ready %}
+    $("#events-table").dataTable();    
+{% endblock %}

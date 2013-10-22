@@ -1,0 +1,13 @@
+django==1.5.4
+bpython==0.12
+django-braces==0.2.1
+django-model-utils==1.1.0
+logutils==0.3.3
+South==0.7.6
+requests==1.2.0
+stripe==1.9.1
+dj-database-url==0.2.1
+django-oauth2-provider==0.2.4
+djangorestframework==2.3.1
+django-social-auth==0.7.23
+django-stripe-payments==2.0b32
