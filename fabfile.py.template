@@ -11,7 +11,7 @@ env.hosts = ['localhost',]
 env.project_name = 'txt2react'
 env.db_name = 't2r'
 # change this if you checked it out to a different directory
-env.project_dir = '~/devel/excella/t2r/'
+env.project_dir = '~/devel/t2r/'
 # your local virtualenv
 env.activate = '~/Envs/t2r/bin/activate'
 env.fixtures = 'core/fixtures/initial_data.json'

@@ -96,7 +96,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 ########## END URL CONFIGURATION
 
-AUTH_PROFILE_MODULE = 'core.Customer'
+AUTH_PROFILE_MODULE = 'payments.Customer'
 
 DJANGO_APPS = (
     'django.contrib.auth',

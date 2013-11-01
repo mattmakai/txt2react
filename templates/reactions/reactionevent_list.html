@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <h2>Your Events</h2>
+            <h2>Your Events <span class="pull-right"><a href="{% url 'create_event' %}" class="btn btn-success">+ Create New Event</a></span></h2>
             {% if object_list %}
             <table id="events-table">
                 <thead>
@@ -18,9 +18,9 @@
                 <tbody>
                     {% for o in object_list %}
                         <tr>
-                            <td>{{ o.name }}</td>
+                            <td><a href="{% url 'view_event' o.slug %}">{{ o.name }}</a></td>
                             <td>{{ o.event_date }}</td>
-                            <td>{{ o.reactions_set.count }}</td>
+                            <td>{{ o.reaction_set.count }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

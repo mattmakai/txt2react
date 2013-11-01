@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>{{ object.name }}</h1>
+        <div class="reactions-list">
+            {% for o in object.reaction_set.all %}
+                {{ o.message }}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
