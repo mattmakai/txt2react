@@ -112,6 +112,7 @@ THIRD_PARTY_APPS = (
     'gunicorn',
     'south',
     'social_auth',
+    'underwear',
 )
 
 LOCAL_APPS = (

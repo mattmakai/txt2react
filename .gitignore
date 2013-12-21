@@ -8,3 +8,4 @@
 fabfile.py
 set_envs.sh
 assets
+deploy/fabfile.py
