@@ -197,4 +197,4 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 # security
 SESSION_COOKIE_SECURE = get_env_setting('SESSION_COOKIE_SECURE')
 
-ALLOWED_HOSTS=['www.txt2react.com', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS=['www.txt2react.com', 'localhost', '127.0.0.1', '10.211.55.6',]
