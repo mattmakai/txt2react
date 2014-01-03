@@ -11,3 +11,4 @@ assets
 deploy/fabfile.py
 deploy/underwear.yml
 deploy/hosts
+deploy/ssh_conf
