@@ -2,11 +2,28 @@
 
 {% load staticfiles %}
 
+{% block css_head %}
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui-smoothness.css' %}">
+    <style>
+        tr.reactions_table {background: #fefefe; color: #222;}
+        a.reactions_table, a:hover.reactions_table {
+            text-decoration: underline;
+            color: #222;
+        }
+        a:hover.reactions_table {
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
             <h2>Your Events <span class="pull-right"><a href="{% url 'create_event' %}" class="btn btn-success">+ Create New Event</a></span></h2>
             {% if object_list %}
+            <br/>
             <table id="events-table">
                 <thead>
                     <tr>
@@ -17,8 +34,8 @@
                 </thead>
                 <tbody>
                     {% for o in object_list %}
-                        <tr>
-                            <td><a href="{% url 'view_event' o.slug %}">{{ o.name }}</a></td>
+                        <tr class="reactions_table">
+                            <td><a href="{% url 'view_event' o.slug %}" class="reactions_table">{{ o.name }}</a></td>
                             <td>{{ o.event_date }}</td>
                             <td>{{ o.reaction_set.count }}</td>
                         </tr>
@@ -33,9 +50,11 @@
 {% endblock %}
 
 {% block javascript_body %}
-    <script src="{% static 'js/jquery.dataTables.min.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 {% endblock %}
 
 {% block js_ready %}
-    $("#events-table").dataTable();    
+    $("#events-table").dataTable({
+        "bJQueryUI": true,
+    });    
 {% endblock %}
