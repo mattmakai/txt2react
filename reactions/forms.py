@@ -7,6 +7,11 @@ from payments.models import Customer
 from .models import ReactionEvent
 
 class ReactionEventForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ReactionEventForm, self).__init__(*args, **kwargs)
+        for f in self.fields:
+            self.fields[f].widget.attrs['class'] = 'form-control'
+
     class Meta:
         model = ReactionEvent
         fields = ['name', 'url', 'event_date',]
