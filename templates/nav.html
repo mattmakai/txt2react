@@ -4,6 +4,13 @@
             <div class="col-md-4">
           <h1 class="logo"><a href="{% url 'landing' %}"><i class="icon-xing"></i> Txt 2 React</a></h1>
             </div>
+            {% if not is_landing and not is_learn_more %}
+            <div class="col-md-6 col-md-offset-2" style="margin-top: 15px;">
+                <h4 class="pull-right">
+                    <a href="{% url 'signout' %}">Sign Out</a>
+                </h4>
+            </div>
+            {% endif %}
           {% comment %}
           <ul class="nav nav-justified">
               <li {% if is_landing %}class="active"{% endif %}><a href="{% url 'landing' %}">Home</a></li>

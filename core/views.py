@@ -41,6 +41,11 @@ class AboutView(TemplateView):
 
 
 class LearnMoreView(TemplateView):
+    def get_context_data(self, **kwargs):
+            context = super(LearnMoreView, self).get_context_data(**kwargs)
+            context['is_learn_more'] = True
+            return context
+
     template_name = "core/learn_more.html"
 
 
