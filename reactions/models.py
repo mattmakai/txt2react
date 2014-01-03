@@ -8,6 +8,7 @@ class ReactionEvent(BaseModel):
     customer = models.ForeignKey(Customer) 
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=2048, blank=True, null=True)
+    location = models.CharField(max_length=128, blank=True, null=True)
     slug = models.CharField(max_length=255, unique=True)
     phone_number = models.IntegerField(blank=True, default=0)
     event_date = models.DateField()

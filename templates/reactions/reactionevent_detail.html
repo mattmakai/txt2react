@@ -3,12 +3,21 @@
 {% block content %}
 
     <div class="container">
-        <h1>{{ object.name }}</h1>
-        <div class="reactions-list">
-            {% for o in object.reaction_set.all %}
-                {{ o.message }}
-            {% endfor %}
-        </div>
+        <h1><a href="{{ object.url }}">{{ object.name }}</a></h1>
+        <p>Event on {{ object.event_date }} in {{ object.location }}.</p>
+
+        {% if object.reaction_set.all.count > 0 %}        
+            <h2>{{ object.reaction_set.all.count }} 
+            reaction{% if object.reaction_set.all.count > 1 %}s{% endif %} 
+            from this event:</h2>
+            <div class="reactions-list">
+                {% for o in object.reaction_set.all %}
+                    {{ o.message }}
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2>No reactions yet from this event.</h2> 
+        {% endif %}
     </div>
 
 {% endblock %}

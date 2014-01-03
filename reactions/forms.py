@@ -14,7 +14,7 @@ class ReactionEventForm(forms.ModelForm):
 
     class Meta:
         model = ReactionEvent
-        fields = ['name', 'url', 'event_date',]
+        fields = ['name', 'url', 'location', 'event_date',] 
 
 
 class LoginForm(forms.Form):
