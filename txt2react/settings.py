@@ -192,7 +192,7 @@ GITHUB_APP_ID = get_env_setting('GITHUB_APP_ID')
 GITHUB_API_SECRET = get_env_setting('GITHUB_API_SECRET')
 TWITTER_CONSUMER_KEY = get_env_setting('TWITTER_CONSUMER_KEY')
 TWITTER_CONSUMER_SECRET = get_env_setting('TWITTER_CONSUMER_SECRET')
-LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_REDIRECT_URL = '/generate-customer-profile/'
 
 # security
 SESSION_COOKIE_SECURE = get_env_setting('SESSION_COOKIE_SECURE')
