@@ -24,7 +24,7 @@ def generate_customer_profile(req):
     except Exception as e:
         c = Customer.objects.create(user=req.user)
         c.save()
-    return HttpResponseRedirect(reverse('dashboard'))
+    return HttpResponseRedirect(reverse('reactions_list'))
 
 
 class ContactView(TemplateView):
@@ -54,7 +54,7 @@ class LandingView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return HttpResponseRedirect(reverse("dashboard"))
+            return HttpResponseRedirect(reverse("reactions_list"))
         else:
             return super(LandingView, self).get(self.request, *args, **kwargs)
 
@@ -72,12 +72,12 @@ class LoginView(TemplateView):
     template_name = "core/login.html"
 
     def get_success_url(self):
-        return reverse('dashboard')
+        return reverse('reactions_list')
         
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return HttpResponseRedirect(reverse("dashboard"))
+            return HttpResponseRedirect(reverse("reactions_list"))
         else:
             return super(LoginView, self).get(self.request, *args, **kwargs)
 
