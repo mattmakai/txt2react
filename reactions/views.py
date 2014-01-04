@@ -9,7 +9,7 @@ import twilio.twiml
 
 from payments.models import Customer
 from .forms import ReactionEventForm
-from .models import ReactionEvent
+from .models import ReactionEvent, Reaction
 
 
 class EventsListView(LoginRequiredMixin, ListView):
@@ -43,7 +43,14 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 class EventDetailView(LoginRequiredMixin, DetailView):
     model = ReactionEvent
 
-def respond_to_msg(self):
+def respond_to_msg(request):
+    if request.method == 'POST':
+        r = Reaction()
+        # temp
+        r.event = ReactionEvent.objects.get(pk=1)
+        r.phone_number = request.POST.get('From')
+        r.message = request.POST.get('Message')
+        r.save()
     resp = twilio.twiml.Response()
     resp.message("Thank you for your feedback! If you have a specific " + \
         "question, please make sure you included your Twitter handle so I " + \

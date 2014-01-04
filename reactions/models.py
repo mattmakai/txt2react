@@ -25,8 +25,9 @@ class ReactionEvent(BaseModel):
 class Reaction(BaseModel):
     event = models.ForeignKey(ReactionEvent)
     slug = models.CharField(max_length=255, unique=True)
+    phone_number = models.CharField(max_length=128)
     message = models.CharField(max_length=1024)
-    received_timestamp = models.DateTimeField()
+    received_timestamp = models.DateTimeField(auto_now=True)
     
     def save(self, *args, **kwargs):
         if not self.slug or self.slug == '':
