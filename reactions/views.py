@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, DetailView
 
 from braces.views import LoginRequiredMixin
@@ -43,6 +44,7 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 class EventDetailView(LoginRequiredMixin, DetailView):
     model = ReactionEvent
 
+@csrf_exempt
 def respond_to_msg(request):
     if request.method == 'POST':
         r = Reaction()

@@ -21,30 +21,34 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <h2>Your Events <span class="pull-right"><a href="{% url 'create_event' %}" class="btn btn-success">+ Create New Event</a></span></h2>
-            {% if object_list %}
-            <br/>
-            <table id="events-table">
-                <thead>
-                    <tr>
-                        <th>Event Name</th>
-                        <th>Date</th>
-                        <th># of Reactions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for o in object_list %}
-                        <tr class="reactions_table">
-                            <td><a href="{% url 'view_event' o.slug %}" class="reactions_table">{{ o.name }}</a></td>
-                            <td>{{ o.event_date }}</td>
-                            <td>{{ o.reaction_set.count }}</td>
+            <div class="col-md-12">
+                <h2>Your Events <span class="pull-right"><a href="{% url 'create_event' %}" class="btn btn-success">+ Create New Event</a></span></h2>
+                {% if object_list %}
+                <br/>
+                <table id="events-table">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th># of Reactions</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-                Nothin' found.
-            {% endif %}
+                    </thead>
+                    <tbody>
+                        {% for o in object_list %}
+                            <tr class="reactions_table">
+                                <td><a href="{% url 'view_event' o.slug %}" class="reactions_table">{{ o.name }}</a></td>
+                                <td>{{ o.event_date }}</td>
+                                <td>{{ o.reaction_set.count }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <h3>You haven't yet created any events.
+                    <a href="{% url 'create_event' %}" style="text-decoration: underline;">Create one now</a>.
+                    </h3>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}
