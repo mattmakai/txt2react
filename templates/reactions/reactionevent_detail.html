@@ -12,7 +12,7 @@
             from this event:</h2>
             <div class="reactions-list">
                 {% for o in object.reaction_set.all %}
-                    "{{ o.message }}" from {{ o.phone_number }}.
+                    "{{ o.message }}" from {{ o.phone_number }}.<br/>
                 {% endfor %}
             </div>
         {% else %}
