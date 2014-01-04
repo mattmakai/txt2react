@@ -13,5 +13,6 @@ urlpatterns = patterns('reactions.views',
     url(r'event/new/$', CreateEventView.as_view(), name="create_event"),
     url(r'event/view/(?P<slug>[a-zA-Z0-9\-]+)/$', EventDetailView.as_view(), 
         name="view_event"),
+    url(r'event/feedback/', 'respond_to_msg', name='respond_to_msg'),
 )
 

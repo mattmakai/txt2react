@@ -1,10 +1,11 @@
 from datetime import datetime
 
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, CreateView, DetailView
 
 from braces.views import LoginRequiredMixin
+import twilio.twiml
 
 from payments.models import Customer
 from .forms import ReactionEventForm
@@ -41,3 +42,10 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 
 class EventDetailView(LoginRequiredMixin, DetailView):
     model = ReactionEvent
+
+def respond_to_msg(self):
+    resp = twilio.twiml.Response()
+    resp.message("Thank you for your feedback! If you have a specific " + \
+        "question, please make sure you included your Twitter handle so I " + \
+        "can get back to you directly.")
+    return HttpResponse(str(resp))
