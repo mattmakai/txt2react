@@ -49,9 +49,9 @@ def respond_to_msg(request):
     if request.method == 'POST':
         r = Reaction()
         # temp
-        r.event = ReactionEvent.objects.get(pk=1)
+        r.event = ReactionEvent.objects.all()[0]
         r.phone_number = request.POST.get('From')
-        r.message = request.POST.get('Message')
+        r.message = request.POST.get('Body')
         r.save()
     resp = twilio.twiml.Response()
     resp.message("Thank you for your feedback! If you have a specific " + \
