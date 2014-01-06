@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.conf import TWILIO_APP_SID
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
@@ -40,7 +40,7 @@ class CreateEventView(LoginRequiredMixin, CreateView):
         event.phone_number = numbers[0].phone_number
         if numbers:
             numbers[0].purchase()
-        numbers[0].update(sms_application_sid=TWILIO_APP_ID)
+        numbers[0].update(sms_application_sid=settings.TWILIO_APP_ID)
 
         event.customer = self.request.user.get_profile()
         event.name = form.cleaned_data['name']
