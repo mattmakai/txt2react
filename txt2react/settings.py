@@ -197,7 +197,7 @@ if PRODUCTION_MODE == True:
     SOCIAL_AUTH_REDIRECT_IS_HTTPS=True
 
 # Twilio
-TWILIO_APP_ID = get_env_setting('TWILIO_APP_ID')
+TWILIO_APP_SID = get_env_setting('TWILIO_APP_SID')
 
 # security
 SESSION_COOKIE_SECURE = get_env_setting('SESSION_COOKIE_SECURE')
