@@ -7,7 +7,8 @@
         <p>Event on {{ object.event_date }} in {{ object.location }}.</p>
 
         <h2><span style="color: #aaa">The phone number for this event is 
-            <span style="color: #fff">{{ object.phone_number }}.</h2>
+            (<span style="color: #fff">{{ object.phone_number|slice:"2:5" }}</span><span style="color: #aaa">)
+            <span style="color: #fff">{{ object.phone_number|slice:"5:8" }}<span style="color: #aaa">-</span>{{ object.phone_number|slice:"8:12" }}<span style="color: #aaa">.</span></h2>
         <br/>
 
         {% if object.reaction_set.all.count > 0 %}        

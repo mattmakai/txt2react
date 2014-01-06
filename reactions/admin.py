@@ -9,7 +9,7 @@ class ReactionEventAdmin(admin.ModelAdmin):
     list_display = ('name', 'customer', 'event_date')
     fieldsets = (
         ('ReactionEvent', {'fields': (
-            'name', 'customer', 'url', 'event_date',
+            'name', 'customer', 'url', 'event_date', 'phone_number',
         )}),
     )
     inlines = (ReactionInline,)

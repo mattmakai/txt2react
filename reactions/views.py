@@ -16,7 +16,9 @@ from .models import ReactionEvent, Reaction
 
 
 class EventsListView(LoginRequiredMixin, ListView):
-    model = ReactionEvent
+    def get_queryset(self):
+        return ReactionEvent.objects.filter( \
+            customer=self.request.user.get_profile())
 
     def get(self, *args, **kwargs):
         try:
