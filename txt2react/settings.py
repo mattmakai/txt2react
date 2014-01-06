@@ -196,6 +196,9 @@ LOGIN_REDIRECT_URL = '/generate-customer-profile/'
 if PRODUCTION_MODE == True:
     SOCIAL_AUTH_REDIRECT_IS_HTTPS=True
 
+# Twilio
+TWILIO_APP_ID = get_env_setting('TWILIO_APP_ID')
+
 # security
 SESSION_COOKIE_SECURE = get_env_setting('SESSION_COOKIE_SECURE')
 

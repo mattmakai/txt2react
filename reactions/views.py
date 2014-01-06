@@ -2,10 +2,12 @@ from datetime import datetime
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from django.settings import TWILIO_APP_ID
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, DetailView
 
 from braces.views import LoginRequiredMixin
+from twilio.rest import TwilioRestClient
 import twilio.twiml
 
 from payments.models import Customer
@@ -31,6 +33,15 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         event = ReactionEvent()
+        
+        # this should be async, and customizable
+        client = TwilioRestClient()
+        numbers = client.phone_numbers.search(area_code=202)
+        event.phone_number = numbers[0].phone_number
+        if numbers:
+            numbers[0].purchase()
+        numbers[0].update(sms_application_sid=TWILIO_APP_ID)
+
         event.customer = self.request.user.get_profile()
         event.name = form.cleaned_data['name']
         event.url = form.cleaned_data['url']
@@ -43,6 +54,7 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 
 class EventDetailView(LoginRequiredMixin, DetailView):
     model = ReactionEvent
+
 
 @csrf_exempt
 def respond_to_msg(request):

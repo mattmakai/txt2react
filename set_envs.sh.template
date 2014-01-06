@@ -24,3 +24,4 @@ export STRIPE_PUBLIC_KEY=''
 # Twilio account keys
 export TWILIO_ACCOUNT_SID=''
 export TWILIO_AUTH_TOKEN=''
+export TWILIO_APP_SID=''
