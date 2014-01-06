@@ -39,8 +39,8 @@ class CreateEventView(LoginRequiredMixin, CreateView):
         numbers = client.phone_numbers.search(area_code=202)
         event.phone_number = numbers[0].phone_number
         if numbers:
-            numbers[0].purchase()
-        numbers[0].update(sms_application_sid=settings.TWILIO_APP_ID)
+            purchased_number = numbers[0].purchase()
+        purchased_number.update(sms_application_sid=settings.TWILIO_APP_ID)
 
         event.customer = self.request.user.get_profile()
         event.name = form.cleaned_data['name']
