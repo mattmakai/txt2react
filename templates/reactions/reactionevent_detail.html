@@ -6,6 +6,10 @@
         <h1><a href="{{ object.url }}">{{ object.name }}</a></h1>
         <p>Event on {{ object.event_date }} in {{ object.location }}.</p>
 
+        <h2><span style="color: #aaa">The phone number for this event is 
+            <span style="color: #fff">{{ object.phone_number }}.</h2>
+        <br/>
+
         {% if object.reaction_set.all.count > 0 %}        
             <h2>{{ object.reaction_set.all.count }} 
             reaction{% if object.reaction_set.all.count > 1 %}s{% endif %} 
