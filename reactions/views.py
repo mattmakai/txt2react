@@ -1,8 +1,8 @@
 from datetime import datetime
 
+from django.conf import TWILIO_APP_SID
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from django.settings import TWILIO_APP_ID
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, DetailView
 
