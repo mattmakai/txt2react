@@ -27,12 +27,8 @@
     {% endif %}
         {% include "nav.html" %}
         {% block content %}{% endblock %}
-    {% if is_landing %}
-    </div>
-    {% endif %}
-
-    <div id="footer" style="margin-top: 25px;">
-      <div class="container" style="margin-top: 25px;">
+    <div id="footer">
+      <div class="container">
          <hr/>
          <p style="text-align: right;">
             &copy; 
@@ -40,6 +36,10 @@
          </p>
       </div>
     </div>
+
+    {% if is_landing %}
+    </div>
+    {% endif %}
 
     <script src="{% static 'js/jquery-1.10.2.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
