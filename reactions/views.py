@@ -40,7 +40,7 @@ class CreateEventView(LoginRequiredMixin, CreateView):
         event.phone_number = numbers[0].phone_number
         if numbers:
             purchased_number = numbers[0].purchase()
-        purchased_number.update(sms_application_sid=settings.TWILIO_APP_ID)
+        purchased_number.update(sms_application_sid=settings.TWILIO_APP_SID)
 
         event.customer = self.request.user.get_profile()
         event.name = form.cleaned_data['name']
