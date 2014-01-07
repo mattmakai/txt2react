@@ -63,7 +63,8 @@ def respond_to_msg(request):
     if request.method == 'POST':
         r = Reaction()
         # temp
-        r.event = ReactionEvent.objects.all()[0]
+        to_number = request.POST.get('To')
+        r.event = ReactionEvent.objects.get(phone_number=to_number)
         r.phone_number = request.POST.get('From')
         r.message = request.POST.get('Body')
         r.save()
