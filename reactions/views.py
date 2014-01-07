@@ -62,7 +62,7 @@ class EventDetailView(LoginRequiredMixin, DetailView):
 def respond_to_msg(request):
     if request.method == 'POST':
         r = Reaction()
-        # temp
+        # needs error handling
         to_number = request.POST.get('To')
         r.event = ReactionEvent.objects.get(phone_number=to_number)
         r.phone_number = request.POST.get('From')
