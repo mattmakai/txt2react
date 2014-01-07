@@ -66,3 +66,7 @@ to the environment. This requires virtualenv and virtualenvwrapper::
     alias t2r='workon t2r; cd ~/devel/py/txt2react; . ./set_envs.sh;'
 
 
+License and Documentation
+-------------------------
+Txt 2 React is free software under the MIT license. 
+
