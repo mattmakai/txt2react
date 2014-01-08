@@ -70,10 +70,11 @@ def respond_to_msg(request):
         r.message = request.POST.get('Body')
         r.save()
         resp = twilio.twiml.Response()
-        resp.message("Thank you for your feedback on the %s event. If you " + \
-                     "are seeking an answer to a specific question, please" + \
+        resp.message("Thank you for your feedback on the " + event.name + \
+                    "event. If you are seeking an answer to a specific " + \
+                    "question, please" + \
                      " make sure you included your Twitter handle for a " + \
-                     "direct response." % (str(event.name),))
+                     "direct response.")
     else:
         resp = "This method requires a POST HTTP request."
     return HttpResponse(str(resp))
