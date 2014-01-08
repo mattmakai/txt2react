@@ -64,12 +64,17 @@ def respond_to_msg(request):
         r = Reaction()
         # needs error handling
         to_number = request.POST.get('To')
-        r.event = ReactionEvent.objects.get(phone_number=to_number)
+        event = ReactionEvent.objects.get(phone_number=to_number)
+        r.event = event
         r.phone_number = request.POST.get('From')
         r.message = request.POST.get('Body')
         r.save()
-    resp = twilio.twiml.Response()
-    resp.message("Thank you for your feedback! If you have a specific " + \
-        "question, please make sure you included your Twitter handle so I " + \
-        "can get back to you directly.")
+        resp = twilio.twiml.Response()
+        resp.message("Thank you for your feedback on the %s event. If you " + \
+                     "are seeking an answer to a specific question, please" + \
+                     " make sure you included your Twitter handle for a " + \
+                     "direct response." % event.name)
+    else:
+        resp = "This method requires a POST HTTP request."
     return HttpResponse(str(resp))
+
